@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pfeferencias',
+      title: 'Preferences',
       initialRoute: HomePage.routeName,
       routes: {
         HomePage.routeName : (BuildContext context) => HomePage(),
