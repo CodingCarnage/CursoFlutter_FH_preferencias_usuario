@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:preferencias_usuario/src/widgets/menu_widget.dart';
+
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key key}) : super(key: key);
 
@@ -11,6 +13,7 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Settings'),
       ),
+      drawer: MenuWidget(),
       body: Center(
         child: Text('Settings Page'),
       ),
