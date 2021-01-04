@@ -16,13 +16,13 @@ class MenuWidget extends StatelessWidget {
             child: Container(),
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/menu-img.jpg'),
+                image: const AssetImage('assets/images/menu-img.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
           ),
           ListTile(
-            leading: Icon(
+            leading: const Icon(
               Icons.pages,
               color: Colors.blue,
             ),
@@ -30,7 +30,7 @@ class MenuWidget extends StatelessWidget {
             onTap: () => Navigator.pushReplacementNamed(context, HomePage.routeName),
           ),
           ListTile(
-            leading: Icon(
+            leading: const Icon(
               Icons.nightlife,
               color: Colors.blue,
             ),
@@ -38,7 +38,7 @@ class MenuWidget extends StatelessWidget {
             onTap: () {},
           ),
           ListTile(
-            leading: Icon(
+            leading: const Icon(
               Icons.people,
               color: Colors.blue,
             ),
@@ -46,13 +46,12 @@ class MenuWidget extends StatelessWidget {
             onTap: () {},
           ),
           ListTile(
-            leading: Icon(
+            leading: const Icon(
               Icons.settings,
               color: Colors.blue,
             ),
             title: Text('Settings'),
-            onTap: () =>
-                Navigator.pushReplacementNamed(context, SettingsPage.routeName),
+            onTap: () => Navigator.pushReplacementNamed(context, SettingsPage.routeName),
           ),
         ],
       ),
