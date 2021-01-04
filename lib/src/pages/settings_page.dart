@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:preferencias_usuario/src/widgets/menu_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key key}) : super(key: key);
@@ -21,14 +22,28 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   void initState() {
     super.initState();
+    _loadPreferences();
     _textEditingController = new TextEditingController(text: _name);
+  }
+
+  _loadPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    _gender = prefs.getInt('gender');
+    setState(() {});
+  }
+
+  _setSelectedRadio(int value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt('gender', value);
+    _gender = value;
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text('Settings'),
       ),
       drawer: const MenuWidget(),
       body: ListView(
@@ -43,7 +58,7 @@ class _SettingsPageState extends State<SettingsPage> {
           const Divider(),
           SwitchListTile(
             value: _secondaryColor,
-            title: const Text('Secondary color'),
+            title: Text('Secondary color'),
             onChanged: (bool value) {
               setState(() {
                 _secondaryColor = value;
@@ -53,30 +68,22 @@ class _SettingsPageState extends State<SettingsPage> {
           const Divider(),
           RadioListTile(
             value: 1,
-            title: const Text('Male'),
+            title: Text('Male'),
             groupValue: _gender,
-            onChanged: (int value) {
-              setState(() {
-                _gender = value;
-              });
-            },
+            onChanged: _setSelectedRadio,
           ),
           RadioListTile(
             value: 2,
-            title: const Text('Female'),
+            title: Text('Female'),
             groupValue: _gender,
-            onChanged: (int value) {
-              setState(() {
-                _gender = value;
-              });
-            },
+            onChanged: _setSelectedRadio,
           ),
           const Divider(),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: TextField(
               controller: _textEditingController,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: 'Name',
                 helperText: 'Name of the person using the phone',
               ),
