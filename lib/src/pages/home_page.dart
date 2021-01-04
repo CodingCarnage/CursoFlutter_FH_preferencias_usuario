@@ -16,12 +16,12 @@ class HomePage extends StatelessWidget {
       drawer: MenuWidget(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const <Widget>[
-          const Text('Secondary color:'),
+        children: <Widget>[
+          Text('Secondary color:'),
           const Divider(),
-          const Text('Gender:'),
+          Text('Gender:'),
           const Divider(),
-          const Text('User name:'),
+          Text('User name:'),
           const Divider(),
         ],
       ),
